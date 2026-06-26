@@ -53,3 +53,15 @@ export class CreateUserDto {
   @IsMatch(["password"])
   cPassword: string;
 }
+
+export class signInDto {
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  password: string;
+}
+
+export type signUpDto = CreateUserDto;

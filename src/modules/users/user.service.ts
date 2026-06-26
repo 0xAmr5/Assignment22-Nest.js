@@ -1,14 +1,17 @@
 import { BadRequestException, ConflictException, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { User } from "../../../DB/models/user.model";
+import { User } from "../../DB/models/user.model";
 import { Model } from "mongoose";
-import UserRepository from "../../../DB/repository/user.repository";
-import { CreateUserDto } from "./dto/createUser.dto";
-import { Hash } from "../../../common/utils/security/hash";
-import { encrypt } from "../../../common/utils/security/encrypt.security";
+import UserRepository from "../../DB/repository/user.repository";
+import { CreateUserDto, signInDto } from "./dto/createUser.dto";
+import { Hash } from "../../common/utils/security/hash";
+import { encrypt } from "../../common/utils/security/encrypt.security";
 
 @Injectable()
 export class UserService {
+    signIn(body: signInDto) {
+        throw new Error('Method not implemented.');
+    }
 
     constructor(
         private readonly userRepository: UserRepository

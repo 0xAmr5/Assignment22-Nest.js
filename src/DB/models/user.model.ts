@@ -3,7 +3,7 @@
 import { MongooseModule, Prop, Schema, SchemaFactory, Virtual } from "@nestjs/mongoose";
 import { GenderEnum, RoleEnum } from "../../common/enum/user.enum";
 import { HydratedDocument } from "mongoose";
-import { Hash } from "crypto";
+import { Hash } from "../../common/utils/security/hash";
 
 @Schema({
     timestamps: true,
@@ -45,7 +45,7 @@ export const UserSchema = SchemaFactory.createForClass(User);
 UserSchema.pre('save', function () {
     console.log(this);
     if (this.isModified("password")) {
-        this.password = new Hash({ plain_text: this.password })
+        this.password = Hash({ plain_text: this.password })
     }
 });
 export type HUserDocument = HydratedDocument<User>;

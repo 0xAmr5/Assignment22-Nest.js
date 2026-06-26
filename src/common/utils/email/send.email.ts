@@ -1,9 +1,7 @@
 import nodemailer from "nodemailer";
-import { EMAIL, PASSWORD } from "../../../config/config.service";
-import Mail from "nodemailer/lib/mailer/index";
 
 export const sendEmail = async (
-    mailOptions: Mail.Options
+    mailOptions: any
 ) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
